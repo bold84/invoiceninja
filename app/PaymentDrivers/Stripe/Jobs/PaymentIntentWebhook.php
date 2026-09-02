@@ -294,9 +294,9 @@ class PaymentIntentWebhook implements ShouldQueue
         $driver->setPaymentHash($payment_hash);
 
         $data = [
-            'payment_method' => $payment_hash->data->object->payment_method ?? $meta['payment_method'],
+            'payment_method' => $payment_hash->data->object->payment_method ?? $meta['payment_method'], //@phpstan-ignore-line
             'payment_type' => PaymentType::PROMPTPAY,
-            'amount' => $payment_hash->data->amount_with_fee,
+            'amount' => $payment_hash->data->amount_with_fee, //@phpstan-ignore-line
             'transaction_reference' => $meta['transaction_reference'],
             'gateway_type_id' => GatewayType::PROMPTPAY,
         ];
