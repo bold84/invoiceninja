@@ -70,9 +70,7 @@ class ProcessPromptPay {
 
                 if (
                     paymentIntent &&
-                    ['succeeded', 'processing'].includes(
-                        paymentIntent.status
-                    )
+                    ['succeeded', 'processing'].includes(paymentIntent.status)
                 ) {
                     document.querySelector(
                         'input[name="gateway_response"]'
@@ -109,8 +107,7 @@ function boot() {
         '';
 
     const stripeConnect =
-        document.querySelector('meta[name="stripe-account-id"]')?.content ??
-        '';
+        document.querySelector('meta[name="stripe-account-id"]')?.content ?? '';
 
     new ProcessPromptPay(publishableKey, secret, stripeConnect)
         .setupStripe()
